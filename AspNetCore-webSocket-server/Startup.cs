@@ -28,10 +28,11 @@ namespace AspNetCore_webSocket_server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.Map("/ws", SocketHandler.Map);
         }
     }
 }
